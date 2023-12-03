@@ -9,11 +9,16 @@ import Foundation
 import UIKit
 
 final class GameView: UIView {
+    weak var delegate: GameViewDelegate?
+    
     private lazy var numberPositionSlider: UISlider = {
         let slider = UISlider()
         slider.tintColor = .systemIndigo
         slider.minimumValueImage = UIImage(systemName: "01.square.fill")
         slider.maximumValueImage = UIImage(systemName: "50.square.fill")
+        slider.minimumValue = 1
+        slider.maximumValue = 50
+        slider.setValue(25, animated: true)
         
         return slider
     }()
@@ -27,7 +32,7 @@ final class GameView: UIView {
         return button
     }()
     
-    private lazy var intentedNumberLabel: UILabel = {
+    private lazy var intendedNumberLabel: UILabel = {
         let label = UILabel()
         label.text = "0"
         label.font = .systemFont(ofSize: 16, weight: .heavy)
@@ -39,6 +44,7 @@ final class GameView: UIView {
         super.init(frame: frame)
         
         setupView()
+        setupActions()
     }
     
     required init?(coder: NSCoder) {
@@ -55,7 +61,7 @@ private extension GameView {
     func setupLayout() {
         add(subviews: [numberPositionSlider,
                        checkNumberButton,
-                       intentedNumberLabel])
+                       intendedNumberLabel])
         
         numberPositionSlider.snp.makeConstraints { make in
             make.center.equalToSuperview()
@@ -68,7 +74,7 @@ private extension GameView {
             make.top.equalTo(numberPositionSlider.snp.bottom).offset(20)
         }
         
-        intentedNumberLabel.snp.makeConstraints { make in
+        intendedNumberLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(checkNumberButton.snp.bottom).offset(20)
         }
@@ -76,5 +82,29 @@ private extension GameView {
     
     func setupContent() {
         backgroundColor = .white
+    }
+}
+
+private extension GameView {
+    @objc func checkintentedNumber() {
+        delegate?.intendedNumberWasChecked()
+    }
+    
+    func setupActions() {
+        checkNumberButton.addTarget(self, action: #selector(checkintentedNumber), for: .touchUpInside)
+    }
+}
+
+extension GameView {
+    func setCheckNumberButtonTitle(title: String) {
+        checkNumberButton.setTitle(title, for: .normal)
+    }
+    
+    func setIntentedNumber(number: String) {
+        intendedNumberLabel.text = number
+    }
+    
+    func getNumberPositionValue() -> Int {
+        return Int(numberPositionSlider.value.rounded())
     }
 }
