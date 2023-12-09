@@ -9,20 +9,21 @@ import Foundation
 import UIKit
 
 final class GameViewController: UIViewController {
+    private var gameService: GameServiceImpl?
+        
     private lazy var gameView = GameView()
-    
-    private lazy var round: Int = 1
-    private lazy var number: Int = 0
-    private lazy var points: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         gameView.delegate = self
         
-        number = Int.random(in: 1...50)
+        gameService = GameServiceImpl(startValue: 1, endValue: 50, rounds: 5)
         
-        gameView.setIntentedNumber(number: String(number))
+        guard let gameService = gameService else { return }
+        
+        gameView.setIntentedNumber(number: String(gameService.currentSecretValue))
+        
     }
     
     override func loadView() {
@@ -31,42 +32,41 @@ final class GameViewController: UIViewController {
 }
 
 extension GameViewController: GameViewDelegate {
-    func intendedNumberWasChecked() {        
+    func intendedNumberWasChecked() {
         let numSlider = gameView.getNumberPositionOnSliderValue()
         
-        if numSlider > number {
-            points += 50 - numSlider + number
-        } else if numSlider < number {
-            points += 50 - number + numSlider
-        } else {
-            points += 50
-        }
+        guard let gameService = gameService else { return }
+
+        gameService.calculateScoreWith(value: numSlider)
         
-        if round == 5 {
-            let alert = UIAlertController(title: "Игра окончена",
-                                          message: "Заработано очков: \(points)",
-                                          preferredStyle: .alert)
-            
-            let action = UIAlertAction(title: "Начать заново",
-                                       style: .default) { [weak self] _ in
-                self?.gameView.setCheckNumberButtonTitle(title: "Проверить")
-            }
-            
-            alert.addAction(action)
-            
-            present(alert, animated: true, completion: nil)
-            
-            round = 1
-            
-            points = 0
-            
+        if gameService.isGameEnded {
+            showAlertWith(score: gameService.score)
             gameView.setCheckNumberButtonTitle(title: "Завершено")
+            
+            gameService.restartGame()
         } else {
-            round += 1
+            gameView.setCheckNumberButtonTitle(title: "Проверить")
+            
+            gameService.startNewRound()
         }
         
-        number = Int.random(in: 1...50)
+        gameView.setIntentedNumber(number: String(gameService.currentSecretValue))
+    }
+}
+
+private extension GameViewController {
+    func showAlertWith(score: Int) {
+        let alert = UIAlertController(title: "Игра окончена",
+                                      message: "Заработано очков: \(score)",
+                                      preferredStyle: .alert)
         
-        gameView.setIntentedNumber(number: String(number))
+        let action = UIAlertAction(title: "Начать заново",
+                                   style: .default) { [weak self] _ in
+            self?.gameView.setCheckNumberButtonTitle(title: "Проверить")
+        }
+        
+        alert.addAction(action)
+        
+        present(alert, animated: true, completion: nil)
     }
 }

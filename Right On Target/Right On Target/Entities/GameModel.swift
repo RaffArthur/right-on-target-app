@@ -9,6 +9,7 @@ import Foundation
 
 struct GameModel: Codable {
     let score: Int?
+    let currentRound: Int?
     let currentSecretValue: Int?
     let isGameEnded: Bool?
 }
