@@ -16,6 +16,9 @@
 		756142802B1D001900E24EF1 /* UIView+AddSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7561427F2B1D001900E24EF1 /* UIView+AddSubviews.swift */; };
 		756142832B1D0BB300E24EF1 /* GameScreenDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756142822B1D0BB300E24EF1 /* GameScreenDelegates.swift */; };
 		7595570F2B1CEA8400DA525D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7595570E2B1CEA8400DA525D /* SnapKit */; };
+		75D6EAC32B24B00B0093A15E /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D6EAC22B24B00B0093A15E /* GameModel.swift */; };
+		75D6EAC72B24B0DF0093A15E /* GameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D6EAC62B24B0DF0093A15E /* GameService.swift */; };
+		75D6EAC92B24B0EB0093A15E /* GameServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D6EAC82B24B0EB0093A15E /* GameServiceImpl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +32,9 @@
 		7561427B2B1CFFCB00E24EF1 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		7561427F2B1D001900E24EF1 /* UIView+AddSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AddSubviews.swift"; sourceTree = "<group>"; };
 		756142822B1D0BB300E24EF1 /* GameScreenDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreenDelegates.swift; sourceTree = "<group>"; };
+		75D6EAC22B24B00B0093A15E /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
+		75D6EAC62B24B0DF0093A15E /* GameService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameService.swift; sourceTree = "<group>"; };
+		75D6EAC82B24B0EB0093A15E /* GameServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameServiceImpl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +70,8 @@
 			children = (
 				7595570C2B1CE49300DA525D /* Application */,
 				756142772B1CFE2D00E24EF1 /* PresentationFlow */,
+				75D6EAC02B24AFA60093A15E /* BusinessLogicFlow */,
+				75D6EAC12B24AFC50093A15E /* Entities */,
 				7561427E2B1CFFEA00E24EF1 /* DevHelpers */,
 			);
 			path = "Right On Target";
@@ -113,6 +121,39 @@
 				7546E63D2B1CDD4900229396 /* Info.plist */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		75D6EAC02B24AFA60093A15E /* BusinessLogicFlow */ = {
+			isa = PBXGroup;
+			children = (
+				75D6EAC42B24B0710093A15E /* Services */,
+			);
+			path = BusinessLogicFlow;
+			sourceTree = "<group>";
+		};
+		75D6EAC12B24AFC50093A15E /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				75D6EAC22B24B00B0093A15E /* GameModel.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		75D6EAC42B24B0710093A15E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				75D6EAC52B24B07A0093A15E /* GameService */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		75D6EAC52B24B07A0093A15E /* GameService */ = {
+			isa = PBXGroup;
+			children = (
+				75D6EAC62B24B0DF0093A15E /* GameService.swift */,
+				75D6EAC82B24B0EB0093A15E /* GameServiceImpl.swift */,
+			);
+			path = GameService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,7 +237,10 @@
 				756142802B1D001900E24EF1 /* UIView+AddSubviews.swift in Sources */,
 				7561427A2B1CFFC100E24EF1 /* GameViewController.swift in Sources */,
 				7561427C2B1CFFCB00E24EF1 /* GameView.swift in Sources */,
+				75D6EAC32B24B00B0093A15E /* GameModel.swift in Sources */,
 				7546E6322B1CDD4800229396 /* SceneDelegate.swift in Sources */,
+				75D6EAC72B24B0DF0093A15E /* GameService.swift in Sources */,
+				75D6EAC92B24B0EB0093A15E /* GameServiceImpl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,7 +398,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.arthurraff.Right-On-Target";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -384,7 +428,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.arthurraff.Right-On-Target";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
