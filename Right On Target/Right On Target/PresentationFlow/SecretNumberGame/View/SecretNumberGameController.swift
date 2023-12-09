@@ -1,5 +1,5 @@
 //
-//  GameViewController.swift
+//  SecretNumberGameViewController.swift
 //  Right On Target
 //
 //  Created by Arthur Raff on 03.12.2023.
@@ -8,17 +8,17 @@
 import Foundation
 import UIKit
 
-final class GameViewController: UIViewController {
-    private var gameService: GameServiceImpl?
+final class SecretNumberGameViewController: UIViewController {
+    private var gameService: SecretNumberGameServiceImpl?
         
-    private lazy var gameView = GameView()
+    private lazy var gameView = SecretNumberGameView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         gameView.delegate = self
         
-        gameService = GameServiceImpl(startValue: 1, endValue: 50, rounds: 5)
+        gameService = SecretNumberGameServiceImpl(startValue: 1, endValue: 50, rounds: 5)
         
         guard let gameService = gameService else { return }
         
@@ -31,8 +31,8 @@ final class GameViewController: UIViewController {
     }
 }
 
-extension GameViewController: GameViewDelegate {
-    func intendedNumberWasChecked() {
+extension SecretNumberGameViewController: SecretNumberGameViewDelegate {
+    func secretNumberWasChecked() {
         let numSlider = gameView.getNumberPositionOnSliderValue()
         
         guard let gameService = gameService else { return }
@@ -54,7 +54,7 @@ extension GameViewController: GameViewDelegate {
     }
 }
 
-private extension GameViewController {
+private extension SecretNumberGameViewController {
     func showAlertWith(score: Int) {
         let alert = UIAlertController(title: "Игра окончена",
                                       message: "Заработано очков: \(score)",

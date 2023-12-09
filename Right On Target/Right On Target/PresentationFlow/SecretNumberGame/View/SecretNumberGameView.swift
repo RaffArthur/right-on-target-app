@@ -1,5 +1,5 @@
 //
-//  GameView.swift
+//  SecretNumberGameView.swift
 //  Right On Target
 //
 //  Created by Arthur Raff on 03.12.2023.
@@ -8,8 +8,8 @@
 import Foundation
 import UIKit
 
-final class GameView: UIView {
-    weak var delegate: GameViewDelegate?
+final class SecretNumberGameView: UIView {
+    weak var delegate: SecretNumberGameViewDelegate?
     
     private lazy var numberPositionSlider: UISlider = {
         let slider = UISlider()
@@ -32,7 +32,7 @@ final class GameView: UIView {
         return button
     }()
     
-    private lazy var intendedNumberLabel: UILabel = {
+    private lazy var secretNumberLabel: UILabel = {
         let label = UILabel()
         label.text = "0"
         label.font = .systemFont(ofSize: 16, weight: .heavy)
@@ -52,7 +52,7 @@ final class GameView: UIView {
     }
 }
 
-private extension GameView {
+private extension SecretNumberGameView {
     func setupView() {
         setupLayout()
         setupContent()
@@ -61,7 +61,7 @@ private extension GameView {
     func setupLayout() {
         add(subviews: [numberPositionSlider,
                        checkNumberButton,
-                       intendedNumberLabel])
+                       secretNumberLabel])
         
         numberPositionSlider.snp.makeConstraints { make in
             make.center.equalToSuperview()
@@ -74,7 +74,7 @@ private extension GameView {
             make.top.equalTo(numberPositionSlider.snp.bottom).offset(20)
         }
         
-        intendedNumberLabel.snp.makeConstraints { make in
+        secretNumberLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(checkNumberButton.snp.bottom).offset(20)
         }
@@ -85,9 +85,9 @@ private extension GameView {
     }
 }
 
-private extension GameView {
+private extension SecretNumberGameView {
     @objc func checkintentedNumber() {
-        delegate?.intendedNumberWasChecked()
+        delegate?.secretNumberWasChecked()
     }
     
     func setupActions() {
@@ -95,13 +95,13 @@ private extension GameView {
     }
 }
 
-extension GameView {
+extension SecretNumberGameView {
     func setCheckNumberButtonTitle(title: String) {
         checkNumberButton.setTitle(title, for: .normal)
     }
     
     func setIntentedNumber(number: String) {
-        intendedNumberLabel.text = number
+        secretNumberLabel.text = number
     }
     
     func getNumberPositionOnSliderValue() -> Int {
