@@ -1,5 +1,5 @@
 //
-//  GameServiceImpl.swift
+//  SecretNumberGameServiceImpl.swift
 //  Right On Target
 //
 //  Created by Arthur Raff on 09.12.2023.
@@ -7,9 +7,7 @@
 
 import Foundation
 
-
-
-final class GameServiceImpl: GameService {
+final class SecretNumberGameServiceImpl: SecretNumberGameService {
     private let randomNumberGenerator = RandomNumberGeneratorImpl(startValue: 1, endValue: 50)
     
     private var minSecretValue: Int
