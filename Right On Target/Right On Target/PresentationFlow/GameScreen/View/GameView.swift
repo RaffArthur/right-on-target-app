@@ -104,7 +104,7 @@ extension GameView {
         intendedNumberLabel.text = number
     }
     
-    func getNumberPositionValue() -> Int {
+    func getNumberPositionOnSliderValue() -> Int {
         return Int(numberPositionSlider.value.rounded())
     }
 }
