@@ -10,6 +10,8 @@ import Foundation
 
 
 final class GameServiceImpl: GameService {
+    private let randomNumberGenerator = RandomNumberGeneratorImpl(startValue: 1, endValue: 50)
+    
     private var minSecretValue: Int
     private var maxSecretValue: Int
     private var lastRound: Int
@@ -26,7 +28,7 @@ final class GameServiceImpl: GameService {
         minSecretValue = startValue
         maxSecretValue = endValue
         lastRound = rounds
-        currentSecretValue = getNewSecretValue()
+        currentSecretValue = randomNumberGenerator?.getRandomNumber() ?? 0
     }
     
     func restartGame() {
@@ -36,7 +38,7 @@ final class GameServiceImpl: GameService {
     }
     
     func startNewRound() {
-        currentSecretValue = getNewSecretValue()
+        currentSecretValue = randomNumberGenerator?.getRandomNumber() ?? 0
         currentRound += 1
     }
     
@@ -48,11 +50,5 @@ final class GameServiceImpl: GameService {
         } else {
             score += 50
         }
-    }
-}
-
-extension GameServiceImpl {
-    func getNewSecretValue() -> Int {
-        (minSecretValue...maxSecretValue).randomElement() ?? 0
     }
 }

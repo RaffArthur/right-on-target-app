@@ -19,6 +19,7 @@
 		75D6EAC32B24B00B0093A15E /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D6EAC22B24B00B0093A15E /* GameModel.swift */; };
 		75D6EAC72B24B0DF0093A15E /* GameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D6EAC62B24B0DF0093A15E /* GameService.swift */; };
 		75D6EAC92B24B0EB0093A15E /* GameServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D6EAC82B24B0EB0093A15E /* GameServiceImpl.swift */; };
+		75D6EACC2B24D4B20093A15E /* RandomNumberGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D6EACB2B24D4B20093A15E /* RandomNumberGenerator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		75D6EAC22B24B00B0093A15E /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		75D6EAC62B24B0DF0093A15E /* GameService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameService.swift; sourceTree = "<group>"; };
 		75D6EAC82B24B0EB0093A15E /* GameServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameServiceImpl.swift; sourceTree = "<group>"; };
+		75D6EACB2B24D4B20093A15E /* RandomNumberGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNumberGenerator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 		75D6EAC02B24AFA60093A15E /* BusinessLogicFlow */ = {
 			isa = PBXGroup;
 			children = (
+				75D6EACA2B24D4770093A15E /* RandomNumberGenerator */,
 				75D6EAC42B24B0710093A15E /* Services */,
 			);
 			path = BusinessLogicFlow;
@@ -154,6 +157,14 @@
 				75D6EAC82B24B0EB0093A15E /* GameServiceImpl.swift */,
 			);
 			path = GameService;
+			sourceTree = "<group>";
+		};
+		75D6EACA2B24D4770093A15E /* RandomNumberGenerator */ = {
+			isa = PBXGroup;
+			children = (
+				75D6EACB2B24D4B20093A15E /* RandomNumberGenerator.swift */,
+			);
+			path = RandomNumberGenerator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,6 +250,7 @@
 				7561427C2B1CFFCB00E24EF1 /* GameView.swift in Sources */,
 				75D6EAC32B24B00B0093A15E /* GameModel.swift in Sources */,
 				7546E6322B1CDD4800229396 /* SceneDelegate.swift in Sources */,
+				75D6EACC2B24D4B20093A15E /* RandomNumberGenerator.swift in Sources */,
 				75D6EAC72B24B0DF0093A15E /* GameService.swift in Sources */,
 				75D6EAC92B24B0EB0093A15E /* GameServiceImpl.swift in Sources */,
 			);
