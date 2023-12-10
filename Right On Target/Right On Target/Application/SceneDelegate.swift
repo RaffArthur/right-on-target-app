@@ -16,8 +16,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
+        let factory: GameSelectionFactory = GameSelectionFactoryImpl()
+        let viewController = factory.createGameSelectionScreenModule()
+        
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = UINavigationController(rootViewController: SelectColorGameViewController())
+        window?.rootViewController = UINavigationController(rootViewController: viewController)
         window?.makeKeyAndVisible()
     }
 }
