@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 final class SecretNumberGameViewController: UIViewController {
-    private var gameService: SecretNumberGameServiceImpl?
+    private lazy var gameService = SecretNumberGameServiceImpl(startValue: 1, endValue: 50, rounds: 5)
         
     private lazy var gameView = SecretNumberGameView()
     
@@ -17,13 +17,10 @@ final class SecretNumberGameViewController: UIViewController {
         super.viewDidLoad()
         
         gameView.delegate = self
-        
-        gameService = SecretNumberGameServiceImpl(startValue: 1, endValue: 50, rounds: 5)
-        
+                
         guard let gameService = gameService else { return }
         
         gameView.setIntentedNumber(number: String(gameService.currentSecretValue))
-        
     }
     
     override func loadView() {
