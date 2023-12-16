@@ -21,8 +21,10 @@
 		7561427A2B1CFFC100E24EF1 /* SecretNumberGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756142792B1CFFC100E24EF1 /* SecretNumberGameController.swift */; };
 		7561427C2B1CFFCB00E24EF1 /* SecretNumberGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7561427B2B1CFFCB00E24EF1 /* SecretNumberGameView.swift */; };
 		756142802B1D001900E24EF1 /* UIView+AddSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7561427F2B1D001900E24EF1 /* UIView+AddSubviews.swift */; };
-		756142832B1D0BB300E24EF1 /* SecretNumberGameDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756142822B1D0BB300E24EF1 /* SecretNumberGameDelegates.swift */; };
+		756142832B1D0BB300E24EF1 /* SecretNumberGameProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756142822B1D0BB300E24EF1 /* SecretNumberGameProtocols.swift */; };
 		7595570F2B1CEA8400DA525D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7595570E2B1CEA8400DA525D /* SnapKit */; };
+		759C44D32B2E27CE005EAF8D /* SecretNumberGameFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759C44D22B2E27CE005EAF8D /* SecretNumberGameFactory.swift */; };
+		759C44D52B2E285C005EAF8D /* SecretNumberGameRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759C44D42B2E285C005EAF8D /* SecretNumberGameRouter.swift */; };
 		75D6EAC72B24B0DF0093A15E /* GameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D6EAC62B24B0DF0093A15E /* GameService.swift */; };
 		75D6EAC92B24B0EB0093A15E /* SecretNumberGameServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D6EAC82B24B0EB0093A15E /* SecretNumberGameServiceImpl.swift */; };
 		75D6EACC2B24D4B20093A15E /* RandomNumberGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D6EACB2B24D4B20093A15E /* RandomNumberGenerator.swift */; };
@@ -52,7 +54,9 @@
 		756142792B1CFFC100E24EF1 /* SecretNumberGameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretNumberGameController.swift; sourceTree = "<group>"; };
 		7561427B2B1CFFCB00E24EF1 /* SecretNumberGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretNumberGameView.swift; sourceTree = "<group>"; };
 		7561427F2B1D001900E24EF1 /* UIView+AddSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AddSubviews.swift"; sourceTree = "<group>"; };
-		756142822B1D0BB300E24EF1 /* SecretNumberGameDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretNumberGameDelegates.swift; sourceTree = "<group>"; };
+		756142822B1D0BB300E24EF1 /* SecretNumberGameProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretNumberGameProtocols.swift; sourceTree = "<group>"; };
+		759C44D22B2E27CE005EAF8D /* SecretNumberGameFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretNumberGameFactory.swift; sourceTree = "<group>"; };
+		759C44D42B2E285C005EAF8D /* SecretNumberGameRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretNumberGameRouter.swift; sourceTree = "<group>"; };
 		75D6EAC62B24B0DF0093A15E /* GameService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameService.swift; sourceTree = "<group>"; };
 		75D6EAC82B24B0EB0093A15E /* SecretNumberGameServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretNumberGameServiceImpl.swift; sourceTree = "<group>"; };
 		75D6EACB2B24D4B20093A15E /* RandomNumberGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNumberGenerator.swift; sourceTree = "<group>"; };
@@ -169,8 +173,10 @@
 		756142782B1CFE5000E24EF1 /* SecretNumberGame */ = {
 			isa = PBXGroup;
 			children = (
-				756142822B1D0BB300E24EF1 /* SecretNumberGameDelegates.swift */,
+				756142822B1D0BB300E24EF1 /* SecretNumberGameProtocols.swift */,
 				7561427D2B1CFFCF00E24EF1 /* View */,
+				759C44D02B2E2777005EAF8D /* Router */,
+				759C44D12B2E277E005EAF8D /* Factory */,
 			);
 			path = SecretNumberGame;
 			sourceTree = "<group>";
@@ -204,6 +210,22 @@
 				7546E63D2B1CDD4900229396 /* Info.plist */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		759C44D02B2E2777005EAF8D /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				759C44D42B2E285C005EAF8D /* SecretNumberGameRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		759C44D12B2E277E005EAF8D /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				759C44D22B2E27CE005EAF8D /* SecretNumberGameFactory.swift */,
+			);
+			path = Factory;
 			sourceTree = "<group>";
 		};
 		75D6EAC02B24AFA60093A15E /* BusinessLogicFlow */ = {
@@ -339,11 +361,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				754284952B262DE300EBD027 /* GameSelectionFactory.swift in Sources */,
+				759C44D32B2E27CE005EAF8D /* SecretNumberGameFactory.swift in Sources */,
 				75D6EADF2B26037E0093A15E /* UIColor+RightOnTarget.swift in Sources */,
+				759C44D52B2E285C005EAF8D /* SecretNumberGameRouter.swift in Sources */,
 				7542848B2B2622A300EBD027 /* GameSelectionViewController.swift in Sources */,
 				75D6EAD02B25E5400093A15E /* SelectColorGameView.swift in Sources */,
 				754284922B26289300EBD027 /* GameSelectionRouter.swift in Sources */,
-				756142832B1D0BB300E24EF1 /* SecretNumberGameDelegates.swift in Sources */,
+				756142832B1D0BB300E24EF1 /* SecretNumberGameProtocols.swift in Sources */,
 				7546E6302B1CDD4800229396 /* AppDelegate.swift in Sources */,
 				756142802B1D001900E24EF1 /* UIView+AddSubviews.swift in Sources */,
 				754284872B26223300EBD027 /* GameSelectionProtocols.swift in Sources */,

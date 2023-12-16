@@ -14,7 +14,8 @@ final class GameSelectionRouter {
 
 extension GameSelectionRouter: GameSelectionScreenRouter {
     func showSecretNumberGameScreen() {
-        let vc = SecretNumberGameViewController()
+        let factory = SecretNumberGameFactoryImpl()
+        let vc = factory.createSecretNumberGameScreenModule()
         
         viewController?.navigationController?.pushViewController(vc, animated: true)
     }
