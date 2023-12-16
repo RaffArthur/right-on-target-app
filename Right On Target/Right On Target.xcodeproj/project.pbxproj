@@ -12,6 +12,8 @@
 		7542848B2B2622A300EBD027 /* GameSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7542848A2B2622A300EBD027 /* GameSelectionViewController.swift */; };
 		754284922B26289300EBD027 /* GameSelectionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754284912B26289300EBD027 /* GameSelectionRouter.swift */; };
 		754284952B262DE300EBD027 /* GameSelectionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754284942B262DE300EBD027 /* GameSelectionFactory.swift */; };
+		7542849B2B2DE80200EBD027 /* SelectColorGameRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7542849A2B2DE80200EBD027 /* SelectColorGameRouter.swift */; };
+		7542849D2B2DEAE800EBD027 /* SelectColorGameFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7542849C2B2DEAE800EBD027 /* SelectColorGameFactory.swift */; };
 		7546E6302B1CDD4800229396 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546E62F2B1CDD4800229396 /* AppDelegate.swift */; };
 		7546E6322B1CDD4800229396 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546E6312B1CDD4800229396 /* SceneDelegate.swift */; };
 		7546E6392B1CDD4900229396 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7546E6382B1CDD4900229396 /* Assets.xcassets */; };
@@ -27,7 +29,7 @@
 		75D6EAD02B25E5400093A15E /* SelectColorGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D6EACF2B25E5400093A15E /* SelectColorGameView.swift */; };
 		75D6EAD22B25E54F0093A15E /* SelectColorGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D6EAD12B25E54F0093A15E /* SelectColorGameViewController.swift */; };
 		75D6EAD42B25E6E70093A15E /* UIStackView+AddArrangedSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D6EAD32B25E6E70093A15E /* UIStackView+AddArrangedSubviews.swift */; };
-		75D6EAD62B25ECBD0093A15E /* SelectColorGameDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D6EAD52B25ECBD0093A15E /* SelectColorGameDelegates.swift */; };
+		75D6EAD62B25ECBD0093A15E /* SelectColorGameProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D6EAD52B25ECBD0093A15E /* SelectColorGameProtocols.swift */; };
 		75D6EAD92B25EE1C0093A15E /* SelectColorGameServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D6EAD82B25EE1C0093A15E /* SelectColorGameServiceImpl.swift */; };
 		75D6EADB2B25F14B0093A15E /* RandomHexGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D6EADA2B25F14B0093A15E /* RandomHexGenerator.swift */; };
 		75D6EADF2B26037E0093A15E /* UIColor+RightOnTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D6EADE2B26037E0093A15E /* UIColor+RightOnTarget.swift */; };
@@ -39,6 +41,8 @@
 		7542848A2B2622A300EBD027 /* GameSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSelectionViewController.swift; sourceTree = "<group>"; };
 		754284912B26289300EBD027 /* GameSelectionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSelectionRouter.swift; sourceTree = "<group>"; };
 		754284942B262DE300EBD027 /* GameSelectionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSelectionFactory.swift; sourceTree = "<group>"; };
+		7542849A2B2DE80200EBD027 /* SelectColorGameRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorGameRouter.swift; sourceTree = "<group>"; };
+		7542849C2B2DEAE800EBD027 /* SelectColorGameFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorGameFactory.swift; sourceTree = "<group>"; };
 		7546E62C2B1CDD4800229396 /* Right On Target.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Right On Target.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7546E62F2B1CDD4800229396 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7546E6312B1CDD4800229396 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,7 +59,7 @@
 		75D6EACF2B25E5400093A15E /* SelectColorGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorGameView.swift; sourceTree = "<group>"; };
 		75D6EAD12B25E54F0093A15E /* SelectColorGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorGameViewController.swift; sourceTree = "<group>"; };
 		75D6EAD32B25E6E70093A15E /* UIStackView+AddArrangedSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+AddArrangedSubviews.swift"; sourceTree = "<group>"; };
-		75D6EAD52B25ECBD0093A15E /* SelectColorGameDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorGameDelegates.swift; sourceTree = "<group>"; };
+		75D6EAD52B25ECBD0093A15E /* SelectColorGameProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorGameProtocols.swift; sourceTree = "<group>"; };
 		75D6EAD82B25EE1C0093A15E /* SelectColorGameServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorGameServiceImpl.swift; sourceTree = "<group>"; };
 		75D6EADA2B25F14B0093A15E /* RandomHexGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomHexGenerator.swift; sourceTree = "<group>"; };
 		75D6EADE2B26037E0093A15E /* UIColor+RightOnTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RightOnTarget.swift"; sourceTree = "<group>"; };
@@ -77,36 +81,52 @@
 			isa = PBXGroup;
 			children = (
 				754284862B26223300EBD027 /* GameSelectionProtocols.swift */,
-				754284852B26221900EBD027 /* GameSelectionView */,
-				754284902B26287B00EBD027 /* GameSelectionRouter */,
-				754284932B262DB200EBD027 /* GameSelectionFactory */,
+				754284852B26221900EBD027 /* View */,
+				754284902B26287B00EBD027 /* Router */,
+				754284932B262DB200EBD027 /* Factory */,
 			);
 			path = GameSelection;
 			sourceTree = "<group>";
 		};
-		754284852B26221900EBD027 /* GameSelectionView */ = {
+		754284852B26221900EBD027 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				754284882B26229400EBD027 /* GameSelectionView.swift */,
 				7542848A2B2622A300EBD027 /* GameSelectionViewController.swift */,
 			);
-			path = GameSelectionView;
+			path = View;
 			sourceTree = "<group>";
 		};
-		754284902B26287B00EBD027 /* GameSelectionRouter */ = {
+		754284902B26287B00EBD027 /* Router */ = {
 			isa = PBXGroup;
 			children = (
 				754284912B26289300EBD027 /* GameSelectionRouter.swift */,
 			);
-			path = GameSelectionRouter;
+			path = Router;
 			sourceTree = "<group>";
 		};
-		754284932B262DB200EBD027 /* GameSelectionFactory */ = {
+		754284932B262DB200EBD027 /* Factory */ = {
 			isa = PBXGroup;
 			children = (
 				754284942B262DE300EBD027 /* GameSelectionFactory.swift */,
 			);
-			path = GameSelectionFactory;
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		754284982B2DE7B700EBD027 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				7542849A2B2DE80200EBD027 /* SelectColorGameRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		754284992B2DE7C000EBD027 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				7542849C2B2DEAE800EBD027 /* SelectColorGameFactory.swift */,
+			);
+			path = Factory;
 			sourceTree = "<group>";
 		};
 		7546E6232B1CDD4800229396 = {
@@ -225,8 +245,10 @@
 		75D6EACD2B25E5070093A15E /* SelectColorGame */ = {
 			isa = PBXGroup;
 			children = (
-				75D6EAD52B25ECBD0093A15E /* SelectColorGameDelegates.swift */,
+				75D6EAD52B25ECBD0093A15E /* SelectColorGameProtocols.swift */,
 				75D6EACE2B25E5300093A15E /* View */,
+				754284982B2DE7B700EBD027 /* Router */,
+				754284992B2DE7C000EBD027 /* Factory */,
 			);
 			path = SelectColorGame;
 			sourceTree = "<group>";
@@ -328,7 +350,9 @@
 				75D6EAD22B25E54F0093A15E /* SelectColorGameViewController.swift in Sources */,
 				7561427A2B1CFFC100E24EF1 /* SecretNumberGameController.swift in Sources */,
 				7561427C2B1CFFCB00E24EF1 /* SecretNumberGameView.swift in Sources */,
-				75D6EAD62B25ECBD0093A15E /* SelectColorGameDelegates.swift in Sources */,
+				7542849B2B2DE80200EBD027 /* SelectColorGameRouter.swift in Sources */,
+				75D6EAD62B25ECBD0093A15E /* SelectColorGameProtocols.swift in Sources */,
+				7542849D2B2DEAE800EBD027 /* SelectColorGameFactory.swift in Sources */,
 				75D6EAD42B25E6E70093A15E /* UIStackView+AddArrangedSubviews.swift in Sources */,
 				7546E6322B1CDD4800229396 /* SceneDelegate.swift in Sources */,
 				75D6EACC2B24D4B20093A15E /* RandomNumberGenerator.swift in Sources */,

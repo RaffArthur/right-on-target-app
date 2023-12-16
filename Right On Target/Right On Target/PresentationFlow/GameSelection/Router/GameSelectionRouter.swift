@@ -20,7 +20,8 @@ extension GameSelectionRouter: GameSelectionScreenRouter {
     }
     
     func showSelectColorGameScreen() {
-        let vc = SelectColorGameViewController()
+        let factory = SelectColorGameFactoryImpl()
+        let vc = factory.createSelectColorGameScreenModule()
         
         viewController?.navigationController?.pushViewController(vc, animated: true)
     }

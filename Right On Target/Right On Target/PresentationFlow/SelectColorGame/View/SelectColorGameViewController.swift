@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 
 final class SelectColorGameViewController: UIViewController {
+    var router: SelectColorGameScreenRouter?
+    
     private lazy var gameService = SelectColorGameServiceImpl(rounds: 5)
     
     private lazy var selectColorGameView = SelectColorGameView()
@@ -20,12 +22,21 @@ final class SelectColorGameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupScreen()
+        setupSelectColorGameHexes()
+    }
+}
+
+private extension SelectColorGameViewController {
+    func setupScreen() {
         selectColorGameView.delegate = self
-        
+    }
+    
+    func setupSelectColorGameHexes() {
         guard let gameService = gameService else { return }
-                
+        
         selectColorGameView.setHexColorsForButtons(hexes: gameService.hexValues)
-        selectColorGameView.setIntendedHex(hex: gameService.currentHexValue)        
+        selectColorGameView.setIntendedHex(hex: gameService.currentHexValue)
     }
 }
 
@@ -36,29 +47,14 @@ extension SelectColorGameViewController: SelectColorGameViewDelegate {
         gameService.calculateScoreWith(value: hex)
         
         if gameService.isGameEnded {
-            showAlertWith(score: gameService.score)
+            router?.showAlertWith(message: "Заработано очков: \(gameService.score)",
+                                  title: "Игра окончена")
             
             gameService.restartGame()
         } else {
             gameService.startNewRound()
         }
         
-        selectColorGameView.setHexColorsForButtons(hexes: gameService.hexValues)
-        selectColorGameView.setIntendedHex(hex: gameService.currentHexValue)
-    }
-}
-
-private extension SelectColorGameViewController {
-    func showAlertWith(score: Int) {
-        let alert = UIAlertController(title: "Игра окончена",
-                                      message: "Заработано очков: \(score)",
-                                      preferredStyle: .alert)
-        
-        let action = UIAlertAction(title: "Начать заново",
-                                   style: .default)
-        
-        alert.addAction(action)
-        
-        present(alert, animated: true, completion: nil)
+        setupSelectColorGameHexes()
     }
 }

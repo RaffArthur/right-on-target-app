@@ -15,7 +15,18 @@ final class GameSelectionFactoryImpl: GameSelectionFactory {
         
         view.router = router
         router.viewController = view
+        view.navigationItem.backBarButtonItem = setupBackButton()
         
         return view
+    }
+}
+
+private extension GameSelectionFactoryImpl {
+    func setupBackButton() -> UIBarButtonItem {
+        let backButton = UIBarButtonItem()
+        backButton.title = "К играм"
+        backButton.style = .plain
+        
+        return backButton
     }
 }
