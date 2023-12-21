@@ -25,6 +25,14 @@ final class SelectColorGameViewController: UIViewController {
         setupScreen()
         setupSelectColorGameHexes()
     }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        coordinator.animate { [weak self] context in
+            self?.selectColorGameView.updateLayoutForLandscape()
+        }
+    }
 }
 
 private extension SelectColorGameViewController {

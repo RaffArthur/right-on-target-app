@@ -23,27 +23,47 @@ final class GameSelectionView: UIView {
     }()
     
     private lazy var secretNumberGameButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Угадай число", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
-        button.setImage(UIImage(systemName: "00.circle.fill"), for: .normal)
-        button.backgroundColor = .systemGray5
-        button.layer.cornerRadius = 8
+        var config = UIButton.Configuration.filled()
+        config.title = "Секретное число"
+        config.titleAlignment = .center
+        config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer {
+            var text = $0
+            text.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+            
+            return text
+        }
+        config.image = UIImage(systemName: "00.square.fill")?.withRenderingMode(.alwaysTemplate)
+        config.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: 18, weight: .heavy)
+        config.imagePadding = 8
+        config.imagePlacement = .leading
+        
+        let button = UIButton(configuration: config)
+        button.layer.cornerRadius = 20
         button.layer.masksToBounds = true
+        button.isPointerInteractionEnabled = true
         
         return button
     }()
     
     private lazy var selectColorGameButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Угадай цвет", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
-        button.setImage(UIImage(systemName: "number.circle.fill"), for: .normal)
-        button.backgroundColor = .systemGray5
-        button.layer.cornerRadius = 8
+        var config = UIButton.Configuration.filled()
+        config.title = "Угадай цвет"
+        config.titleAlignment = .center
+        config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer {
+            var text = $0
+            text.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+            
+            return text
+        }
+        config.image = UIImage(systemName: "number.square.fill")?.withRenderingMode(.alwaysTemplate)
+        config.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: 18, weight: .heavy)
+        config.imagePadding = 8
+        config.imagePlacement = .leading
+        
+        let button = UIButton(configuration: config)
+        button.layer.cornerRadius = 20
         button.layer.masksToBounds = true
+        button.isPointerInteractionEnabled = true
         
         return button
     }()
@@ -68,6 +88,12 @@ final class GameSelectionView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        setupView()
+    }
 }
 
 private extension GameSelectionView {
@@ -77,23 +103,33 @@ private extension GameSelectionView {
     }
     
     func setupLayout() {
-        addSubview(gameSelectionStack)
+        add(subviews: [gameSelectionTitleLabel,
+                       gameSelectionStack])
         
-        gameSelectionStack.add(arrangedSubviews: [gameSelectionTitleLabel,
-                                                  secretNumberGameButton,
+        gameSelectionStack.add(arrangedSubviews: [secretNumberGameButton,
                                                   selectColorGameButton])
         
-        gameSelectionStack.setCustomSpacing(16, after: gameSelectionTitleLabel)
+        gameSelectionTitleLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(gameSelectionStack.snp.top).offset(-24)
+            make.centerX.equalTo(gameSelectionStack)
+        }
         
         gameSelectionStack.snp.makeConstraints { make in
             make.center.equalToSuperview {
                 $0.safeAreaLayoutGuide
             }
+            
+            make.leading.equalToSuperview {
+                $0.safeAreaLayoutGuide
+            }.offset(16)
+            
+            make.trailing.equalToSuperview {
+                $0.safeAreaLayoutGuide
+            }.offset(-16)
         }
         
         secretNumberGameButton.snp.makeConstraints { make in
-            make.height.equalTo(40)
-            make.width.equalTo(280)
+            make.height.equalTo(140)
         }
     }
     
@@ -119,5 +155,15 @@ private extension GameSelectionView {
     
     @objc func selectColorGameButtonWasTapped() {
         delegate?.selectColorGameButtonWasTapped()
+    }
+}
+
+extension GameSelectionView {
+    func updateLayoutForLandscape() {
+        if UIDevice.current.orientation.isLandscape {
+            gameSelectionStack.axis = .horizontal
+        } else {
+            gameSelectionStack.axis = .vertical
+        }
     }
 }

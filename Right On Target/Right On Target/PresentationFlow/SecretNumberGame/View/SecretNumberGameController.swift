@@ -12,14 +12,14 @@ final class SecretNumberGameViewController: UIViewController {
     var router: SecretNumberGameScreenRouter?
     
     private lazy var gameService = SecretNumberGameServiceImpl(startValue: 1, endValue: 50, rounds: 5)
-        
+    
     private lazy var gameView = SecretNumberGameView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         gameView.delegate = self
-                
+            
         guard let gameService = gameService else { return }
         
         gameView.setIntentedNumber(number: String(gameService.currentSecretValue))
@@ -41,6 +41,7 @@ extension SecretNumberGameViewController: SecretNumberGameViewDelegate {
         if gameService.isGameEnded {            
             router?.showAlertWith(message: "Заработано очков \(gameService.score)", title: "Игра окончена") { [weak self] in
                 self?.gameView.setCheckNumberButtonTitle(title: "Проверить")
+                self?.gameView.resetSliderValue()
             }
             
             gameView.setCheckNumberButtonTitle(title: "Завершено")
