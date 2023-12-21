@@ -22,6 +22,14 @@ final class GameSelectionViewController: UIViewController {
         
         gameSelectionView.delegate = self
     }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        coordinator.animate { [weak self] context in
+            self?.gameSelectionView.updateLayoutForLandscape()
+        }
+    }
 }
 
 extension GameSelectionViewController: GameSelectionViewDelegate {
