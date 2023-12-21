@@ -9,21 +9,20 @@ import Foundation
 import UIKit
 
 final class SecretNumberGameViewController: UIViewController {
-    private var gameService: SecretNumberGameServiceImpl?
-        
+    var router: SecretNumberGameScreenRouter?
+    
+    private lazy var gameService = SecretNumberGameServiceImpl(startValue: 1, endValue: 50, rounds: 5)
+    
     private lazy var gameView = SecretNumberGameView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         gameView.delegate = self
-        
-        gameService = SecretNumberGameServiceImpl(startValue: 1, endValue: 50, rounds: 5)
-        
+            
         guard let gameService = gameService else { return }
         
         gameView.setIntentedNumber(number: String(gameService.currentSecretValue))
-        
     }
     
     override func loadView() {
@@ -36,11 +35,15 @@ extension SecretNumberGameViewController: SecretNumberGameViewDelegate {
         let numSlider = gameView.getNumberPositionOnSliderValue()
         
         guard let gameService = gameService else { return }
-
+        
         gameService.calculateScoreWith(value: numSlider)
         
-        if gameService.isGameEnded {
-            showAlertWith(score: gameService.score)
+        if gameService.isGameEnded {            
+            router?.showAlertWith(message: "Заработано очков \(gameService.score)", title: "Игра окончена") { [weak self] in
+                self?.gameView.setCheckNumberButtonTitle(title: "Проверить")
+                self?.gameView.resetSliderValue()
+            }
+            
             gameView.setCheckNumberButtonTitle(title: "Завершено")
             
             gameService.restartGame()
@@ -51,22 +54,5 @@ extension SecretNumberGameViewController: SecretNumberGameViewDelegate {
         }
         
         gameView.setIntentedNumber(number: String(gameService.currentSecretValue))
-    }
-}
-
-private extension SecretNumberGameViewController {
-    func showAlertWith(score: Int) {
-        let alert = UIAlertController(title: "Игра окончена",
-                                      message: "Заработано очков: \(score)",
-                                      preferredStyle: .alert)
-        
-        let action = UIAlertAction(title: "Начать заново",
-                                   style: .default) { [weak self] _ in
-            self?.gameView.setCheckNumberButtonTitle(title: "Проверить")
-        }
-        
-        alert.addAction(action)
-        
-        present(alert, animated: true, completion: nil)
     }
 }

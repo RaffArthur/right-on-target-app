@@ -1,5 +1,5 @@
 //
-//  SecretNumberGameService.swift
+//  GameService.swift
 //  Right On Target
 //
 //  Created by Arthur Raff on 09.12.2023.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-protocol SecretNumberGameService: AnyObject {
+protocol GameService: AnyObject {
     func restartGame()
     func startNewRound()
-    func calculateScoreWith(value: Int)
+    func calculateScoreWith(value: Any)
 }

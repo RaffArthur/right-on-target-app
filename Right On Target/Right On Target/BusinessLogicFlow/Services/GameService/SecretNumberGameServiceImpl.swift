@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class SecretNumberGameServiceImpl: SecretNumberGameService {
+final class SecretNumberGameServiceImpl: GameService {
     private let randomNumberGenerator = RandomNumberGeneratorImpl(startValue: 1, endValue: 50)
     
     private var minSecretValue: Int
@@ -40,7 +40,9 @@ final class SecretNumberGameServiceImpl: SecretNumberGameService {
         currentRound += 1
     }
     
-    func calculateScoreWith(value: Int) {
+    func calculateScoreWith(value: Any) {
+        guard let value = value as? Int else { return }
+        
         if value > currentSecretValue {
             score += 50 - value + currentSecretValue
         } else if value < currentSecretValue {
